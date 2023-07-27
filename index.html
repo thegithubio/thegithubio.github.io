@@ -11,7 +11,7 @@ document.querySelector`canvas`.getContext`webgl`.useProgram(p)
 document.querySelector`canvas`.getContext`webgl`.enableVertexAttribArray(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(p,`p`))
 document.querySelector`canvas`.getContext`webgl`.enableVertexAttribArray(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(p,`c`))
 document.querySelector`canvas`.getContext`webgl`.enable(document.querySelector`canvas`.getContext`webgl`.DEPTH_TEST)
-j=[...Array(9)].map(_=>[[0,0,0,0,0,0,0,1,0,[],0],[Array(6)],[[...Array(4)].map(_=>[...Array(6)].map(_=>Math.random()*2-1))]])
+j=[...Array(99)].map(_=>[[0,0,0,0,0,0,0,1,0,[],0],[Array(6)],[[...Array(4)].map(_=>[...Array(6)].map(_=>Math.random()*2-1))]])
 w=1024
 setInterval(_=>{w--
 qu=0
@@ -45,7 +45,7 @@ g=g.concat(o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5
 l=l.concat(1-o[0][7],o[0][7],o[0][7],1,1-o[0][7],o[0][7],o[0][7],1,1-o[0][7],o[0][7],o[0][7],1)}
 if(!qu|!w){r=j[0]
 for(n=1;n<j.length-1;n++)if(j[n][0][10]>r[0][10])r=j[n]
-j=[...Array(9)].map(_=>[[0,0,0,0,0,0,0,1,0,[],0],[[0,0,0,0,0,0]],[[...Array(4)].map(_=>[...Array(6)].map(_=>Math.random()*2-1))]])
+j=[...Array(99)].map(_=>[[0,0,0,0,0,0,0,1,0,[],0],[[0,0,0,0,0,0]],[[...Array(4)].map(_=>[...Array(6)].map(_=>Math.random()*2-1))]])
 if(r[0][10])for(o of j)for(n=0;n<4;n++)for(m=0;m<6;m++)o[2][0][n][m]=6*n+m==Math.round(Math.random()*23)?Math.random()*2-1:r[2][0][n][m]
 w=1024*(1+r[0][10])}
 document.querySelector`canvas`.getContext`webgl`.clear(document.querySelector`canvas`.getContext`webgl`.COLOR_BUFFER_BIT|document.querySelector`canvas`.getContext`webgl`.DEPTH_BUFFER_BIT)
