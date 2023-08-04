@@ -1,58 +1,72 @@
-<body style=cursor:none;margin:0><canvas></body><script>document.querySelector`canvas`.width=innerWidth
-document.querySelector`canvas`.height=innerHeight
-document.querySelector`canvas`.getContext`webgl`.shaderSource(v=document.querySelector`canvas`.getContext`webgl`.createShader(document.querySelector`canvas`.getContext`webgl`.VERTEX_SHADER),`attribute vec4 p;attribute vec4 c;varying vec4 f;void main(){gl_Position=mat4(${innerHeight/innerWidth},0,0,0,0,1,0,0,0,0,1,0,0,0,0,1)*p;f=c;}`)
-document.querySelector`canvas`.getContext`webgl`.shaderSource(f=document.querySelector`canvas`.getContext`webgl`.createShader(document.querySelector`canvas`.getContext`webgl`.FRAGMENT_SHADER),`precision highp float;varying vec4 f;void main(){gl_FragColor=f;}`)
-document.querySelector`canvas`.getContext`webgl`.attachShader(p=document.querySelector`canvas`.getContext`webgl`.createProgram(),v)
-document.querySelector`canvas`.getContext`webgl`.attachShader(p,f)
-document.querySelector`canvas`.getContext`webgl`.compileShader(v)
-document.querySelector`canvas`.getContext`webgl`.compileShader(f)
-document.querySelector`canvas`.getContext`webgl`.linkProgram(p)
-document.querySelector`canvas`.getContext`webgl`.useProgram(p)
-document.querySelector`canvas`.getContext`webgl`.enableVertexAttribArray(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(p,`p`))
-document.querySelector`canvas`.getContext`webgl`.enableVertexAttribArray(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(p,`c`))
-document.querySelector`canvas`.getContext`webgl`.enable(document.querySelector`canvas`.getContext`webgl`.DEPTH_TEST)
-j=[...Array(1)].map(_=>[[0,0,0,0,0,0,0,1,0,[],0],[Array(6)],[[...Array(4)].map(_=>[...Array(6)].map(_=>Math.random()*2-1))]])
-w=1024
-setInterval(_=>{w--
-qu=0
-g=l=[]
-for(o of j){if(o[0][7]){qu++
-z=Array(12)
-c=[[[o[0][4],o[0][5]+2/3],[o[0][4]-Math.sin(o[0][6]),o[0][5]+2/3-Math.cos(o[0][6])]],[[o[0][4],o[0][5]+2/3],[o[0][4]+Math.sin(o[0][6]),o[0][5]+2/3+Math.cos(o[0][6])]],[[o[0][4],o[0][5]+2/3],[o[0][4]-Math.cos(o[0][6])*Math.sqrt(3)-Math.sin(o[0][6]),o[0][5]+2/3+Math.sin(o[0][6])*Math.sqrt(3)-Math.cos(o[0][6])]],[[o[0][4],o[0][5]+2/3],[o[0][4]+Math.cos(o[0][6])*Math.sqrt(3)-Math.sin(o[0][6]),o[0][5]+2/3-Math.sin(o[0][6])*Math.sqrt(3)-Math.cos(o[0][6])]],[[o[0][4],o[0][5]+2/3],[o[0][4]-Math.cos(o[0][6])*Math.sqrt(3)+Math.sin(o[0][6]),o[0][5]+2/3+Math.sin(o[0][6])*Math.sqrt(3)+Math.cos(o[0][6])]],[[o[0][4],o[0][5]+2/3],[o[0][4]+Math.cos(o[0][6])*Math.sqrt(3)+Math.sin(o[0][6]),o[0][5]+2/3-Math.sin(o[0][6])*Math.sqrt(3)+Math.cos(o[0][6])]]]
-for(n=0;n<6;n++)for(b of[[[0,1/3],[-1/Math.sqrt(3),-2/3]],[[0,1/3],[1/Math.sqrt(3),-2/3]],[[-1/Math.sqrt(3),-2/3],[1/Math.sqrt(3),-2/3]],[[0,1],[-2/Math.sqrt(3),-1]],[[0,1],[2/Math.sqrt(3),-1]],[[-2/Math.sqrt(3),-1],[2/Math.sqrt(3),-1]]])if(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0]))>0&((b[0][0]-c[n][0][0])*(c[n][1][1]-c[n][0][1])-(b[0][1]-c[n][0][1])*(c[n][1][0]-c[n][0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0]))>=0&((b[0][0]-c[n][0][0])*(c[n][1][1]-c[n][0][1])-(b[0][1]-c[n][0][1])*(c[n][1][0]-c[n][0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0]))<1)if(!z[n*2+1]){z[n*2]=c[n][0][0]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][0]-c[n][0][0])
-z[n*2+1]=c[n][0][1]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][1]-c[n][0][1])
-o[1][0][n]=Math.hypot((c[n][0][0]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][0]-c[n][0][0]))-o[0][4],(c[n][0][1]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][1]-c[n][0][1]))-(o[0][5]+2/3))}else if(Math.abs(z[n*2+1]-o[0][5]-2/3)>Math.abs((c[n][0][1]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][1]-c[n][0][1]))-o[0][5]-2/3)){z[n*2]=c[n][0][0]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][0]-c[n][0][0])
-z[n*2+1]=c[n][0][1]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][1]-c[n][0][1])
-o[1][0][n]=Math.hypot((c[n][0][0]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][0]-c[n][0][0]))-o[0][4],(c[n][0][1]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][1]-c[n][0][1]))-(o[0][5]+2/3))}
-for(n=0;n<4;n++){for(m=0;m<6;m++)o[0][n]+=o[1][0][m]*o[2][0][n][m]
-o[0][n]=o[0][n]<0?0:1}
-
-if(!o[0][8]){q=[[-1/Math.sqrt(3),-2/3],[-2/Math.sqrt(3),-1]]
-for(a of[[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16],[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16]],[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16],[o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24]],[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16],[o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24]]])if(((a[0][1]-q[0][1])*(q[1][0]-q[0][0])-(a[0][0]-q[0][0])*(q[1][1]-q[0][1]))*((a[1][1]-q[0][1])*(q[1][0]-q[0][0])-(a[1][0]-q[0][0])*(q[1][1]-q[0][1]))<0&((q[0][1]-a[0][1])*(a[1][0]-a[0][0])-(q[0][0]-a[0][0])*(a[1][1]-a[0][1]))*((q[1][1]-a[0][1])*(a[1][0]-a[0][0])-(q[1][0]-a[0][0])*(a[1][1]-a[0][1]))<0){o[0][9]=[[1/Math.sqrt(3),-2/3],[2/Math.sqrt(3),-1]]
-o[0][8]=-1
-o[0][10]+=1/2}
-q=[[1/Math.sqrt(3),-2/3],[2/Math.sqrt(3),-1]]
-for(a of[[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16],[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16]],[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16],[o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24]],[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16],[o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24]]])if(((a[0][1]-q[0][1])*(q[1][0]-q[0][0])-(a[0][0]-q[0][0])*(q[1][1]-q[0][1]))*((a[1][1]-q[0][1])*(q[1][0]-q[0][0])-(a[1][0]-q[0][0])*(q[1][1]-q[0][1]))<0&((q[0][1]-a[0][1])*(a[1][0]-a[0][0])-(q[0][0]-a[0][0])*(a[1][1]-a[0][1]))*((q[1][1]-a[0][1])*(a[1][0]-a[0][0])-(q[1][0]-a[0][0])*(a[1][1]-a[0][1]))<0){o[0][9]=[[-1/Math.sqrt(3),-2/3],[-2/Math.sqrt(3),-1]]
-o[0][8]=1
-o[0][10]+=1/2}}else{for(a of[[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16],[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16]],[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16],[o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24]],[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16],[o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24]]])if(((a[0][1]-o[0][9][0][1])*(o[0][9][1][0]-o[0][9][0][0])-(a[0][0]-o[0][9][0][0])*(o[0][9][1][1]-o[0][9][0][1]))*((a[1][1]-o[0][9][0][1])*(o[0][9][1][0]-o[0][9][0][0])-(a[1][0]-o[0][9][0][0])*(o[0][9][1][1]-o[0][9][0][1]))<0&((o[0][9][0][1]-a[0][1])*(a[1][0]-a[0][0])-(o[0][9][0][0]-a[0][0])*(a[1][1]-a[0][1]))*((o[0][9][1][1]-a[0][1])*(a[1][0]-a[0][0])-(o[0][9][1][0]-a[0][0])*(a[1][1]-a[0][1]))<0){o[0][10]+=1
-o[0][9]=o[0][8]==1?o[0][9]==[[1/Math.sqrt(3),-2/3],[1/Math.sqrt(3),-1]]?[[-1/Math.sqrt(3),-2/3],[-2/Math.sqrt(3),-1]]:o[0][9]==[[-1/Math.sqrt(3),-2/3],[-2/Math.sqrt(3),-1]]?[[0,1/3],[0,1]]:o[0][9]==[[0,1/3],[0,1]]?[[1/Math.sqrt(3),-2/3],[2/Math.sqrt(3),-1]]:[[1/Math.sqrt(3),-2/3],[1/Math.sqrt(3),-1]]:o[0][9]==[[-1/Math.sqrt(3),-2/3],[-1/Math.sqrt(3),-1]]?[[1/Math.sqrt(3),-2/3],[2/Math.sqrt(3),-1]]:o[0][9]==[[1/Math.sqrt(3),-2/3],[2/Math.sqrt(3),-1]]?[[0,1/3],[0,1]]:o[0][9]==[[0,1/3],[0,1]]?[[-1/Math.sqrt(3),-2/3],[-2/Math.sqrt(3),-1]]:[[-1/Math.sqrt(3),-2/3],[-1/Math.sqrt(3),-1]]}}
-
-for(a of[[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16],[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16]],[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16],[o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24]],[[o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16],[o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24]]])for(b of[[[0,1/3],[-1/Math.sqrt(3),-2/3]],[[0,1/3],[1/Math.sqrt(3),-2/3]],[[-1/Math.sqrt(3),-2/3],[1/Math.sqrt(3),-2/3]],[[0,1],[-2/Math.sqrt(3),-1]],[[0,1],[2/Math.sqrt(3),-1]],[[-2/Math.sqrt(3),-1],[2/Math.sqrt(3),-1]]])if(((a[0][1]-b[0][1])*(b[1][0]-b[0][0])-(a[0][0]-b[0][0])*(b[1][1]-b[0][1]))*((a[1][1]-b[0][1])*(b[1][0]-b[0][0])-(a[1][0]-b[0][0])*(b[1][1]-b[0][1]))<0&((b[0][1]-a[0][1])*(a[1][0]-a[0][0])-(b[0][0]-a[0][0])*(a[1][1]-a[0][1]))*((b[1][1]-a[0][1])*(a[1][0]-a[0][0])-(b[1][0]-a[0][0])*(a[1][1]-a[0][1]))<0)o[0][7]=0
-o[0][6]+=Math.PI*(o[0][2]-o[0][0])/256
-o[0][4]+=Math.sin(-o[0][6])*(o[0][1]-o[0][3]/2)/256
-o[0][5]-=Math.cos(-o[0][6])*(o[0][1]-o[0][3]/2)/256}
-g=g.concat(o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48-Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48+Math.sin(o[0][6])/16,0,1,o[0][4]+Math.sin(o[0][6])*Math.sqrt(3)/48+Math.cos(o[0][6])/16,o[0][5]+2/3+Math.cos(o[0][6])*Math.sqrt(3)/48-Math.sin(o[0][6])/16,0,1,o[0][4]-Math.sin(o[0][6])*Math.sqrt(3)/24,o[0][5]+2/3-Math.cos(o[0][6])*Math.sqrt(3)/24,0,1)
-l=l.concat(1-o[0][7],o[0][7],o[0][7],1,1-o[0][7],o[0][7],o[0][7],1,1-o[0][7],o[0][7],o[0][7],1)}
-if(0){r=j[0]
-for(n=1;n<j.length-1;n++)if(j[n][0][10]>r[0][10])r=j[n]
-j=[...Array(99)].map(_=>[[0,0,0,0,0,0,0,1,0,[],0],[[0,0,0,0,0,0]],[[...Array(4)].map(_=>[...Array(6)].map(_=>Math.random()*2-1))]])
-if(r[0][10])for(o of j)for(n=0;n<4;n++)for(m=0;m<6;m++)o[2][0][n][m]=6*n+m==Math.round(Math.random()*23)?Math.random()*2-1:r[2][0][n][m]
-w=1024*(1+r[0][10])}
-document.querySelector`canvas`.getContext`webgl`.clear(document.querySelector`canvas`.getContext`webgl`.COLOR_BUFFER_BIT|document.querySelector`canvas`.getContext`webgl`.DEPTH_BUFFER_BIT)
-document.querySelector`canvas`.getContext`webgl`.bindBuffer(document.querySelector`canvas`.getContext`webgl`.ARRAY_BUFFER,document.querySelector`canvas`.getContext`webgl`.createBuffer())
-document.querySelector`canvas`.getContext`webgl`.bufferData(document.querySelector`canvas`.getContext`webgl`.ARRAY_BUFFER,new Float32Array(g.concat(0,1/3,0,1,-1/Math.sqrt(3),-2/3,0,1,1/Math.sqrt(3),-2/3,0,1,0,1,0,1,-2/Math.sqrt(3),-1,0,1,2/Math.sqrt(3),-1,0,1,-innerWidth/innerHeight,1,0,1,innerWidth/innerHeight,1,0,1,-innerWidth/innerHeight,-1,0,1,innerWidth/innerHeight,1,0,1,-innerWidth/innerHeight,-1,0,1,innerWidth/innerHeight,-1,0,1)),document.querySelector`canvas`.getContext`webgl`.DYNAMIC_DRAW)
-document.querySelector`canvas`.getContext`webgl`.vertexAttribPointer(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(p,`p`),4,document.querySelector`canvas`.getContext`webgl`.FLOAT,false,0,0)
-document.querySelector`canvas`.getContext`webgl`.bindBuffer(document.querySelector`canvas`.getContext`webgl`.ARRAY_BUFFER,document.querySelector`canvas`.getContext`webgl`.createBuffer())
-document.querySelector`canvas`.getContext`webgl`.bufferData(document.querySelector`canvas`.getContext`webgl`.ARRAY_BUFFER,new Float32Array(l.concat(0,0,1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1)),document.querySelector`canvas`.getContext`webgl`.DYNAMIC_DRAW)
-document.querySelector`canvas`.getContext`webgl`.vertexAttribPointer(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(p,`c`),4,document.querySelector`canvas`.getContext`webgl`.FLOAT,false,0,0)
-document.querySelector`canvas`.getContext`webgl`.drawArrays(document.querySelector`canvas`.getContext`webgl`.TRIANGLES,0,12+3*j.length)})</script>
+<body style=cursor:none;margin:0><canvas></body><script>c=document.querySelector`canvas`
+c.width=innerWidth
+c.height=innerHeight
+g=c.getContext`webgl`
+C=s=>g.createShader(s)
+s=(s,S)=>g.shaderSource(s,S)
+s(v=C(g.VERTEX_SHADER),`attribute vec2 p;attribute vec3 c;varying vec3 f;void main(){gl_Position=vec4(p,0,1);gl_Position.x*=${c.height/c.width};f=c;}`)
+s(f=C(g.FRAGMENT_SHADER),`precision highp float;varying vec3 f;void main(){gl_FragColor=vec4(f,1);}`)
+p=g.createProgram()
+a=s=>g.attachShader(p,s)
+a(v)
+a(f)
+c=s=>g.compileShader(s)
+c(v)
+c(f)
+g.linkProgram(p)
+g.useProgram(p)
+e=a=>g.enableVertexAttribArray(g.getAttribLocation(p,a))
+e(`p`)
+e(`c`)
+array=[...Array(99)].map(_=>[0,0,0,1,[Array(6),Array(4)]])
+for(each of array){f=1
+for(Each of each[4])f*=Each.length
+each.push([...Array(f)].map(_=>Math.random()*2-1),0,[],0,0)}
+t=1024
+setInterval(_=>{t--
+T=0
+v=[0,1,-2/Math.sqrt(3),-1,2/Math.sqrt(3),-1,0,1/3,-1/Math.sqrt(3),-2/3,1/Math.sqrt(3),-2/3]
+C=[0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1]
+for(pp of array){if(pp[3]){T++
+c=[[[pp[0],pp[1]+2/3],[pp[0]-Math.sin(pp[2]),pp[1]+2/3-Math.cos(pp[2])]],[[pp[0],pp[1]+2/3],[pp[0]+Math.sin(pp[2]),pp[1]+2/3+Math.cos(pp[2])]],[[pp[0],pp[1]+2/3],[pp[0]-Math.cos(pp[2])*Math.sqrt(3)-Math.sin(pp[2]),pp[1]+2/3+Math.sin(pp[2])*Math.sqrt(3)-Math.cos(pp[2])]],[[pp[0],pp[1]+2/3],[pp[0]+Math.cos(pp[2])*Math.sqrt(3)-Math.sin(pp[2]),pp[1]+2/3-Math.sin(pp[2])*Math.sqrt(3)-Math.cos(pp[2])]],[[pp[0],pp[1]+2/3],[pp[0]-Math.cos(pp[2])*Math.sqrt(3)+Math.sin(pp[2]),pp[1]+2/3+Math.sin(pp[2])*Math.sqrt(3)+Math.cos(pp[2])]],[[pp[0],pp[1]+2/3],[pp[0]+Math.cos(pp[2])*Math.sqrt(3)+Math.sin(pp[2]),pp[1]+2/3-Math.sin(pp[2])*Math.sqrt(3)+Math.cos(pp[2])]]]
+for(n=0;n<6;n++){pp[4][0][n]=0
+for(b of[[[0,1/3],[-1/Math.sqrt(3),-2/3]],[[0,1/3],[1/Math.sqrt(3),-2/3]],[[-1/Math.sqrt(3),-2/3],[1/Math.sqrt(3),-2/3]],[[0,1],[-2/Math.sqrt(3),-1]],[[0,1],[2/Math.sqrt(3),-1]],[[-2/Math.sqrt(3),-1],[2/Math.sqrt(3),-1]]])if(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0]))>0&((b[0][0]-c[n][0][0])*(c[n][1][1]-c[n][0][1])-(b[0][1]-c[n][0][1])*(c[n][1][0]-c[n][0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0]))>=0&((b[0][0]-c[n][0][0])*(c[n][1][1]-c[n][0][1])-(b[0][1]-c[n][0][1])*(c[n][1][0]-c[n][0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0]))<1)pp[4][0][n]=!pp[4][0][n]?Math.hypot(c[n][0][0]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][0]-c[n][0][0])-pp[0],c[n][0][1]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][1]-c[n][0][1])-(pp[1]+2/3)):
+pp[4][0][n]>Math.hypot(c[n][0][0]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][0]-c[n][0][0])-pp[0],c[n][0][1]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][1]-c[n][0][1])-(pp[1]+2/3))?Math.hypot(c[n][0][0]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][0]-c[n][0][0])-pp[0],c[n][0][1]+(((b[0][0]-c[n][0][0])*(b[1][1]-b[0][1])-(b[0][1]-c[n][0][1])*(b[1][0]-b[0][0]))/((c[n][1][0]-c[n][0][0])*(b[1][1]-b[0][1])-(c[n][1][1]-c[n][0][1])*(b[1][0]-b[0][0])))*(c[n][1][1]-c[n][0][1])-(pp[1]+2/3)):pp[4][0][n]}
+for(n=1;n<pp[4].length-1;n++)for(m=0;m<pp[4][n].length;m++){pp[4][n][m]=0
+for(i=0;i<pp[4][n-1].length;i++)pp[4][n][m]+=pp[4][n-1][i]*pp[5][pp[4][n-1].length*m+i]}
+for(m=0;m<pp[4][pp[4].length-1].length;m++){pp[4][pp[4].length-1][m]=0
+for(i=0;i<pp[4][pp[4].length-2].length;i++)pp[4][pp[4].length-1][m]+=pp[4][pp[4].length-2][i]*pp[5][pp[4][pp[4].length-2].length*m+i]
+pp[4][pp[4].length-1][m]=pp[4][pp[4].length-1][m]>0?1:0}
+if(!pp[6]){if(Math.hypot(-3/2/Math.sqrt(3)-pp[0],-5/6-(pp[1]+2/3))<1/8){pp[6]=-1
+pp[7]=[3/2/Math.sqrt(3),-5/6]
+pp[8]++}
+if(Math.hypot(3/2/Math.sqrt(3)-pp[0],-5/6-(pp[1]+2/3))<1/8){pp[6]=1
+pp[7]=[-3/2/Math.sqrt(3),-5/6]
+pp[8]++}}else if(Math.hypot(pp[7][0]-pp[0],pp[7][1]-(pp[1]+2/3))<1/8){pp[8]++
+pp[7]=pp[6]==1?pp[7]==[-3/2/Math.sqrt(3),-5/6]?[0,2/3]:pp[7]==[0,2/3]?[3/2/Math.sqrt(3),-5/6]:[-3/2/Math.sqrt(3),-5/6]:pp[7]==[3/2/Math.sqrt(3),-5/6]?[0,2/3]:pp[7]==[0,2/3]?[-3/2/Math.sqrt(3),-5/6]:[3/2/Math.sqrt(3),-5/6]}
+if(pp[6])pp[9]=pp[8]+(3/Math.sqrt(3)-Math.hypot(pp[7][0]-pp[0],pp[7][1]-(pp[1]+2/3)))
+for(i of[[[pp[0]+Math.sin(pp[2])*Math.sqrt(3)/48-Math.cos(pp[2])/16,pp[1]+2/3+Math.cos(pp[2])*Math.sqrt(3)/48+Math.sin(pp[2])/16],[pp[0]+Math.sin(pp[2])*Math.sqrt(3)/48+Math.cos(pp[2])/16,pp[1]+2/3+Math.cos(pp[2])*Math.sqrt(3)/48-Math.sin(pp[2])/16]],[[pp[0]+Math.sin(pp[2])*Math.sqrt(3)/48-Math.cos(pp[2])/16,pp[1]+2/3+Math.cos(pp[2])*Math.sqrt(3)/48+Math.sin(pp[2])/16],[pp[0]-Math.sin(pp[2])*Math.sqrt(3)/24,pp[1]+2/3-Math.cos(pp[2])*Math.sqrt(3)/24]],[[pp[0]+Math.sin(pp[2])*Math.sqrt(3)/48+Math.cos(pp[2])/16,pp[1]+2/3+Math.cos(pp[2])*Math.sqrt(3)/48-Math.sin(pp[2])/16],[pp[0]-Math.sin(pp[2])*Math.sqrt(3)/24,pp[1]+2/3-Math.cos(pp[2])*Math.sqrt(3)/24]]])for(b of[[[0,1/3],[-1/Math.sqrt(3),-2/3]],[[0,1/3],[1/Math.sqrt(3),-2/3]],[[-1/Math.sqrt(3),-2/3],[1/Math.sqrt(3),-2/3]],[[0,1],[-2/Math.sqrt(3),-1]],[[0,1],[2/Math.sqrt(3),-1]],[[-2/Math.sqrt(3),-1],[2/Math.sqrt(3),-1]]])if(((i[0][1]-b[0][1])*(b[1][0]-b[0][0])-(i[0][0]-b[0][0])*(b[1][1]-b[0][1]))*((i[1][1]-b[0][1])*(b[1][0]-b[0][0])-(i[1][0]-b[0][0])*(b[1][1]-b[0][1]))<0&((b[0][1]-i[0][1])*(i[1][0]-i[0][0])-(b[0][0]-i[0][0])*(i[1][1]-i[0][1]))*((b[1][1]-i[0][1])*(i[1][0]-i[0][0])-(b[1][0]-i[0][0])*(i[1][1]-i[0][1]))<0)pp[3]=0
+pp[2]+=Math.PI*(pp[4][pp[4].length-1][2]-pp[4][pp[4].length-1][0])/256
+pp[0]+=Math.sin(-pp[2])*(pp[4][pp[4].length-1][1]-pp[4][pp[4].length-1][3]/2)/256
+pp[1]-=Math.cos(-pp[2])*(pp[4][pp[4].length-1][1]-pp[4][pp[4].length-1][3]/2)/256
+v.push(pp[0]+Math.sin(pp[2])*Math.sqrt(3)/48-Math.cos(pp[2])/16,pp[1]+Math.cos(pp[2])*Math.sqrt(3)/48+Math.sin(pp[2])/16+2/3,pp[0]+Math.sin(pp[2])*Math.sqrt(3)/48+Math.cos(pp[2])/16,pp[1]+Math.cos(pp[2])*Math.sqrt(3)/48-Math.sin(pp[2])/16+2/3,pp[0]-Math.sin(pp[2])*Math.sqrt(3)/24,pp[1]+2/3-Math.cos(pp[2])*Math.sqrt(3)/24)
+C.push(0,1,1,0,1,1,0,1,1)}}
+if(!T|!t){t=1024
+r=array[0]
+for(n=1;n<array.length-1;n++){if(array[n][9]>r[9])r=array[n]}
+array=[...Array(99)].map(_=>[0,0,0,1,[Array(6),Array(4)]])
+for(each of array){f=1
+for(Each of each[4])f*=Each.length
+each.push([...Array(f)].map(_=>Math.random()*2-1),0,[],0,0)
+if(r[9])for(n=0;n<each[5].length-1;n++)if(n!=Math.floor(Math.random()*each[5].length))each[5][n]=r[5][n]}}
+g.clearColor(0,0,1,1)
+g.clear(g.COLOR_BUFFER_BIT)
+b=B=>g.bindBuffer(a=g.ARRAY_BUFFER,B)
+c=_=>g.createBuffer()
+b(c())
+B=(A,l,t)=>{g.bufferData(a,new Float32Array(A),g.DYNAMIC_DRAW)
+g.vertexAttribPointer(g.getAttribLocation(p,l),t,g.FLOAT,false,0,0)}
+B(v,`p`,2)
+b(c())
+B(C,`c`,3)
+g.drawArrays(g.TRIANGLES,0,v.length/2)})</script>
