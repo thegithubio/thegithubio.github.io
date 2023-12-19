@@ -1,116 +1,88 @@
-<body style=margin:0><canvas></body><script>c=document.querySelector`canvas`
-w=c.width=innerWidth
-h=c.height=innerHeight
-g=c.getContext`webgl`
-s=(s,S)=>g.shaderSource(s,S)
-C=S=>g.createShader(S)
-s(v=C(g.VERTEX_SHADER),`attribute vec2 P;attribute vec3 C;varying vec3 F;void main(){gl_Position=vec4(P,0,1);gl_Position.x*=${h/w};F=C;}`)
-s(f=C(g.FRAGMENT_SHADER),`precision highp float;varying vec3 F;void main(){gl_FragColor=vec4(F,1);}`)
-P=g.createProgram()
-a=S=>g.attachShader(P,S)
-a(v)
-a(f)
-c=S=>g.compileShader(S)
-c(v)
-c(f)
-g.linkProgram(P)
-g.useProgram(P)
-G=A=>g.getAttribLocation(P,A)
-e=A=>g.enableVertexAttribArray(G(A))
-e`P`
-e`C`
-g.clearColor(0,0,1,1)
-M=Math
-R=M.sqrt(3)
-u=1/3
-U=2/3
-q=1/R
-Q=2/R
-Ç=R/24
-ç=Ç/2
-S=[[0,u,-q,-U],[0,u,q,-U],[-q,-U,q,-U],[0,1,-Q,-1],[0,1,Q,-1],[-Q,-1,Q,-1]]
-r=_=>M.random()
-l=a=>a.length
-H=(a,b)=>M.hypot(a,b)
-s=a=>M.sin(a)
-t=0
-n=_=>performance.now()
-N=n()
-setInterval(_=>{I=(n()-N)/1024
-N=n()
-c=a=>M.cos(a)
-if(n()>t){if(t){B=a[0]
-for(k=1;k<l(a)-1;k++)if(a[k][7]>B[7])B=a[k]}
-a=[...Array(99)].map(_=>[0,0,0,1,0,[],0,0,[Array(12),Array(4)]])
-for(e of a){k=1
-for(E of e[8])k*=l(E)
-e.push([...Array(k)].map(_=>r()*2-1))
-if(t&&B[7])for(k=0;k<l(e[9])-1;k++)if(k!=M.floor(r()*l(e[9])))e[9][k]=B[9][k]}
-t+=9999}
-T=[0,1,-Q,-1,Q,-1,0,u,-q,-U,q,-U]
-C=[0,1,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,1]
-for(e of a)if(e[3]){for(f=0;f<l(e[8][0]);f++){A=e[2]+M.PI/l(e[8][0])*2*f
-L=[e[0],e[1]+U,e[0]-s(A),e[1]+U-c(A)]
-e[8][0][f]=0
-for(E of S){b=L[2]-L[0]
-B=E[2]-E[0]
-j=E[3]-E[1]
-J=L[3]-L[1]
-d=b*j-J*B
-x=E[0]-L[0]
-X=E[1]-L[1]
-w=(x*J-X*b)/d
-m=(x*j-X*B)/d
-if(m>0&w>=0&w<1){h=H(s(A),c(A))*m
-e[8][0][f]=!e[8][0][f]?h:e[8][0][f]>h?h:e[8][0][f]}}}
-for(k=1;k<l(e[8])-1;k++)for(m=0;m<l(e[8][n]);m++){e[8][k][m]=0
-for(i=0;i<l(e[8][k-1]);i++)e[8][k][m]+=e[8][k-1][i]*e[9][l(e[8][k-1])*m+i]}
-for(m=0;m<l(e[8][l(e[8])-1]);m++){e[8][l(e[8])-1][m]=0
-for(i=0;i<l(e[8][l(e[8])-2]);i++)e[8][l(e[8])-1][m]+=e[8][l(e[8])-2][i]*e[9][l(e[8][l(e[8])-2])*m+i]
-e[8][l(e[8])-1][m]=e[8][l(e[8])-1][m]>0?1:0}
-B=e[1]+U
-j=3/2/R
-J=-5/6
-d=1/8
-if(!e[4]){if(H(-j-e[0],J-B)<d){e[4]=-1
-e[5]=[j,J]
-e[6]++}
-if(H(j-e[0],J-B)<d){e[4]=1
-e[5]=[-j,J]
-e[6]++}}else{x=e[5][0]-e[0]
-X=e[5][1]-B
-if(H(x,X)<d){e[6]++
-e[5]=e[4]==1?e[5]==[-j,J]?[0,U]:e[5]==[0,U]?[j,J]:[-j,J]:e[5]==[j,J]?[0,U]:e[5]==[0,U]?[-j,J]:[j,J]}
-e[7]=e[6]+3/R-H(x,X)}
-X=e[2]
-i=s(X)
-o=c(X)
-m=i/16
-d=o/16
-x=e[0]
-for(E of[[x+i*ç-d,B+o*ç+m,x+i*ç+d,B+o*ç-m],[x+i*ç-d,B+o*ç+m,x-i*Ç,B-o*Ç],[x+i*ç+d,B+o*ç-m,x-i*Ç,B-o*Ç]])for(L of S){b=L[0]
-D=E[0]
-y=L[1]
-Y=E[1]
-w=L[2]
-W=E[2]
-j=L[3]
-J=E[3]
-z=w-b
-Z=W-D
-if(((Y-y)*z-(D-b)*(j-y))*((J-y)*z-(W-b)*(j-y))<0&((y-Y)*Z-(b-D)*(J-Y))*((j-Y)*Z-(w-D)*(J-Y))<0)e[3]=0}
-w=e[8][l(e[8])-1][1]-e[8][l(e[8])-1][3]/2
-e[0]+=s(-X)*w*I
-e[1]-=c(-X)*w*I
-e[2]+=M.PI*(e[8][l(e[8])-1][2]-e[8][l(e[8])-1][0])*I
-T.push(x+i*ç-d,B+o*ç+m,x+i*ç+d,B+o*ç-m,x-i*Ç,B-o*Ç)
-C.push(0,1,1,0,1,1,0,1,1)}
-g.clear(g.COLOR_BUFFER_BIT)
-B=g.ARRAY_BUFFER
-c=_=>g.createBuffer()
-b=(F,A,t)=>{g.bindBuffer(B,c())
-g.bufferData(B,new Float32Array(F),g.DYNAMIC_DRAW)
-g.vertexAttribPointer(G(A),t,g.FLOAT,false,0,0)}
-b(T,`P`,2)
-b(C,`C`,3)
-g.drawArrays(g.TRIANGLES,0,l(T)/2)})</script>
+<body style=margin:0><canvas></body><script>document.querySelector`canvas`.width=innerWidth;
+document.querySelector`canvas`.height=innerHeight;
+if(document.querySelector`canvas`.width>document.querySelector`canvas`.height){i=0;
+y=1;
+x=document.querySelector`canvas`.width/document.querySelector`canvas`.height;
+z=document.querySelector`canvas`.height/document.querySelector`canvas`.width;}else{i=1;
+x=1;
+y=document.querySelector`canvas`.height/document.querySelector`canvas`.width;
+z=document.querySelector`canvas`.width/document.querySelector`canvas`.height;}
+document.querySelector`canvas`.getContext`webgl`.shaderSource(V=document.querySelector`canvas`.getContext`webgl`.createShader(document.querySelector`canvas`.getContext`webgl`.VERTEX_SHADER),`attribute vec4 P;attribute vec4 C;varying vec4 F;void main(){gl_Position=P;gl_Position[${i}]*=${z};F=C;}`);
+document.querySelector`canvas`.getContext`webgl`.shaderSource(F=document.querySelector`canvas`.getContext`webgl`.createShader(document.querySelector`canvas`.getContext`webgl`.FRAGMENT_SHADER),`precision highp float;varying vec4 F;void main(){gl_FragColor=F;}`);
+document.querySelector`canvas`.getContext`webgl`.attachShader(P=document.querySelector`canvas`.getContext`webgl`.createProgram(),V);
+document.querySelector`canvas`.getContext`webgl`.attachShader(P,F);
+document.querySelector`canvas`.getContext`webgl`.compileShader(V);
+document.querySelector`canvas`.getContext`webgl`.compileShader(F);
+document.querySelector`canvas`.getContext`webgl`.linkProgram(P);
+document.querySelector`canvas`.getContext`webgl`.useProgram(P);
+document.querySelector`canvas`.getContext`webgl`.enableVertexAttribArray(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(P,`P`));
+document.querySelector`canvas`.getContext`webgl`.enableVertexAttribArray(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(P,`C`));
+document.querySelector`canvas`.getContext`webgl`.enable(document.querySelector`canvas`.getContext`webgl`.DEPTH_TEST);
+document.querySelector`canvas`.getContext`webgl`.clearColor(0,0,0,1);
+T=Math.PI*2;
+A=[[0,0,Math.PI,1,[0,0,0,0]]].concat([...Array(64)].map(_=>[(Math.random()*2-1)*x,(Math.random()*2-1)*y,Math.random()*T,1,[8,4],[]]));
+onkeydown=_=>{if(event.key===`ArrowLeft`)A[0][4][0]=1;
+else if(event.key===`ArrowUp`)A[0][4][1]=1;
+else if(event.key===`ArrowRight`)A[0][4][2]=1;
+else if(event.key===`ArrowDown`)A[0][4][3]=1;}
+onkeyup=_=>{if(event.key===`ArrowLeft`)A[0][4][0]=0;
+else if(event.key===`ArrowUp`)A[0][4][1]=0;
+else if(event.key===`ArrowRight`)A[0][4][2]=0;
+else if(event.key===`ArrowDown`)A[0][4][3]=0;}
+for(E=1;E<A.length;E++){S=1;
+for(n=0;n<A[E][4].length;n++){s=A[E][4][n];
+S*=s;
+A[E][4][n]=[...Array(s)].map(_=>0);}
+for(R=0;R<S;R++)A[E][5].push(Math.random()*2-1);}
+n=performance.now();
+(F=_=>{I=(performance.now()-n)/1000;
+n=performance.now();
+p=[];
+C=[];
+L=[-x,y,x,y,x,y,x,-y,x,-y,-x,-y,-x,-y,-x,y];
+for(E=0;E<A.length;E++){Triangle=[A[E][0]+Math.sin(A[E][2])*Math.sqrt(3)/48-Math.cos(A[E][2])/16,A[E][1]+Math.cos(A[E][2])*Math.sqrt(3)/48+Math.sin(A[E][2])/16,A[E][0]+Math.sin(A[E][2])*Math.sqrt(3)/48+Math.cos(A[E][2])/16,A[E][1]+Math.cos(A[E][2])*Math.sqrt(3)/48-Math.sin(A[E][2])/16,A[E][0]-Math.sin(A[E][2])/24*Math.sqrt(3),A[E][1]-Math.cos(A[E][2])/24*Math.sqrt(3)];
+l=[Triangle[0],Triangle[1],Triangle[2],Triangle[3],Triangle[2],Triangle[3],Triangle[4],Triangle[5],Triangle[4],Triangle[5],Triangle[0],Triangle[1]];
+L=L.concat(l);}
+A[0][0]+=(Math.sin(-A[0][2])*(A[0][4][1]-A[0][4][3]/2)+(A[0][4][2]-A[0][4][0])*(Math.cos(A[0][2])-Math.cos(A[0][2]-(A[0][4][2]-A[0][4][0])*(A[0][4][1]-A[0][4][3]/2)/8)))*I;
+A[0][1]-=(Math.cos(A[0][2])*(A[0][4][1]-A[0][4][3]/2)-(A[0][4][2]-A[0][4][0])*(Math.sin(-A[0][2])-Math.sin((A[0][4][2]-A[0][4][0])*(A[0][4][1]-A[0][4][3]/2)/8-A[0][2])))*I;
+A[0][2]+=Math.PI*(A[0][4][2]-A[0][4][0])*I;
+Triangle=[A[0][0]+Math.sin(A[0][2])*Math.sqrt(3)/48-Math.cos(A[0][2])/16,A[0][1]+Math.cos(A[0][2])*Math.sqrt(3)/48+Math.sin(A[0][2])/16,A[0][0]+Math.sin(A[0][2])*Math.sqrt(3)/48+Math.cos(A[0][2])/16,A[0][1]+Math.cos(A[0][2])*Math.sqrt(3)/48-Math.sin(A[0][2])/16,A[0][0]-Math.sin(A[0][2])/24*Math.sqrt(3),A[0][1]-Math.cos(A[0][2])/24*Math.sqrt(3)];
+l=[Triangle[0],Triangle[1],Triangle[2],Triangle[3],Triangle[2],Triangle[3],Triangle[4],Triangle[5],Triangle[4],Triangle[5],Triangle[0],Triangle[1]];
+if(A[0][3]){for(j=0;j<l.length;j+=4){for(k=0;k<13;k+=4)if(((l[j+1]-L[k+1])*(L[k+2]-L[k])-(l[j]-L[k])*(L[k+3]-L[k+1]))*((l[j+3]-L[k+1])*(L[k+2]-L[k])-(l[j+2]-L[k])*(L[k+3]-L[k+1]))<0&((L[k+1]-l[j+1])*(l[j+2]-l[j])-(L[k]-l[j])*(l[j+3]-l[j+1]))*((L[k+3]-l[j+1])*(l[j+2]-l[j])-(L[k+2]-l[j])*(l[j+3]-l[j+1]))<0)if(k>12){K=Math.floor((k-16)/12);
+if(A[K][3]){A[0][3]=0;
+A[K][3]=0;}}else A[0][3]=0;
+for(k=28;k<L.length;k+=4)if(((l[j+1]-L[k+1])*(L[k+2]-L[k])-(l[j]-L[k])*(L[k+3]-L[k+1]))*((l[j+3]-L[k+1])*(L[k+2]-L[k])-(l[j+2]-L[k])*(L[k+3]-L[k+1]))<0&((L[k+1]-l[j+1])*(l[j+2]-l[j])-(L[k]-l[j])*(l[j+3]-l[j+1]))*((L[k+3]-l[j+1])*(l[j+2]-l[j])-(L[k+2]-l[j])*(l[j+3]-l[j+1]))<0)if(k>12){K=Math.floor((k-16)/12);
+if(A[K][3]){A[0][3]=0;
+A[K][3]=0;}}else A[0][3]=0;}}
+if(A[0][3]){p.push(A[0][0]+Math.sin(A[0][2])*Math.sqrt(3)/48-Math.cos(A[0][2])/16,A[0][1]+Math.cos(A[0][2])*Math.sqrt(3)/48+Math.sin(A[0][2])/16,0,1,A[0][0]+Math.sin(A[0][2])*Math.sqrt(3)/48+Math.cos(A[0][2])/16,A[0][1]+Math.cos(A[0][2])*Math.sqrt(3)/48-Math.sin(A[0][2])/16,0,1,A[0][0]-Math.sin(A[0][2])/24*Math.sqrt(3),A[0][1]-Math.cos(A[0][2])/24*Math.sqrt(3),0,1)
+C.push(1,1,1,1,1,1,1,1,1,1,1,1);}
+for(E=1;E<A.length;E++){A[E][0]+=(Math.sin(-A[E][2])*(A[E][4][A[E][4].length-1][1]-A[E][4][A[E][4].length-1][3]/2)+(A[E][4][A[E][4].length-1][2]-A[E][4][A[E][4].length-1][0])*(Math.cos(A[E][2])-Math.cos(A[E][2]-(A[E][4][A[E][4].length-1][2]-A[E][4][A[E][4].length-1][0])*(A[E][4][A[E][4].length-1][1]-A[E][4][A[E][4].length-1][3]/2)/8)))*I;
+A[E][1]-=(Math.cos(A[E][2])*(A[E][4][A[E][4].length-1][1]-A[E][4][A[E][4].length-1][3]/2)-(A[E][4][A[E][4].length-1][2]-A[E][4][A[E][4].length-1][0])*(Math.sin(-A[E][2])-Math.sin((A[E][4][A[E][4].length-1][2]-A[E][4][A[E][4].length-1][0])*(A[E][4][A[E][4].length-1][1]-A[E][4][A[E][4].length-1][3]/2)/8-A[E][2])))*I;
+A[E][2]+=Math.PI*(A[E][4][A[E][4].length-1][2]-A[E][4][A[E][4].length-1][0])*I;
+Triangle=[A[E][0]+Math.sin(A[E][2])*Math.sqrt(3)/48-Math.cos(A[E][2])/16,A[E][1]+Math.cos(A[E][2])*Math.sqrt(3)/48+Math.sin(A[E][2])/16,A[E][0]+Math.sin(A[E][2])*Math.sqrt(3)/48+Math.cos(A[E][2])/16,A[E][1]+Math.cos(A[E][2])*Math.sqrt(3)/48-Math.sin(A[E][2])/16,A[E][0]-Math.sin(A[E][2])/24*Math.sqrt(3),A[E][1]-Math.cos(A[E][2])/24*Math.sqrt(3)];
+l=[Triangle[0],Triangle[1],Triangle[2],Triangle[3],Triangle[2],Triangle[3],Triangle[4],Triangle[5],Triangle[4],Triangle[5],Triangle[0],Triangle[1]];
+if(A[E][3]){for(j=0;j<l.length;j+=4){for(k=0;k<13+12*E;k+=4)if(((l[j+1]-L[k+1])*(L[k+2]-L[k])-(l[j]-L[k])*(L[k+3]-L[k+1]))*((l[j+3]-L[k+1])*(L[k+2]-L[k])-(l[j+2]-L[k])*(L[k+3]-L[k+1]))<0&((L[k+1]-l[j+1])*(l[j+2]-l[j])-(L[k]-l[j])*(l[j+3]-l[j+1]))*((L[k+3]-l[j+1])*(l[j+2]-l[j])-(L[k+2]-l[j])*(l[j+3]-l[j+1]))<0)if(k>12){K=Math.floor((k-16)/12);
+if(A[K][3]){A[E][3]=0;
+A[K][3]=0;}}else A[E][3]=0;
+for(k=28+12*E;k<L.length;k+=4)if(((l[j+1]-L[k+1])*(L[k+2]-L[k])-(l[j]-L[k])*(L[k+3]-L[k+1]))*((l[j+3]-L[k+1])*(L[k+2]-L[k])-(l[j+2]-L[k])*(L[k+3]-L[k+1]))<0&((L[k+1]-l[j+1])*(l[j+2]-l[j])-(L[k]-l[j])*(l[j+3]-l[j+1]))*((L[k+3]-l[j+1])*(l[j+2]-l[j])-(L[k+2]-l[j])*(l[j+3]-l[j+1]))<0)if(k>12){K=Math.floor((k-16)/12);
+if(A[K][3]){A[E][3]=0;
+A[K][3]=0;}}else A[E][3]=0;}}
+if(A[E][3]){for(input=0;input<A[E][4][0].length;input++){A[E][4][0][input]=0;
+for(l=0;l<13+12*E;l+=4){if(((A[E][0]-L[l])*(L[l+1]-L[l+3])-(A[E][1]-L[l+1])*(L[l]-L[l+2]))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2]))>0&((A[E][0]-L[l])*Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)-(A[E][1]-L[l+1])*Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2]))>=0&((A[E][0]-L[l])*Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)-(A[E][1]-L[l+1])*Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2]))<1){A[E][4][0][input]=!A[E][4][0][input]?Math.hypot(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input),Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input))*((A[E][0]-L[l])*(L[l+1]-L[l+3])-(A[E][1]-L[l+1])*(L[l]-L[l+2]))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2])):A[E][4][0][input]>Math.hypot(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input),Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input))*((A[E][0]-L[l])*(L[l+1]-L[l+3])-(A[E][1]-L[l+1])*(L[l]-L[l+2]))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2]))?Math.hypot(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input),Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input))*((A[E][0]-L[l])*(L[l+1]-L[l+3])-(A[E][1]-L[l+1])*(L[l]-L[l+2]))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2])):A[E][4][0][input];}}
+for(l=28+12*E;l<L.length;l+=4){if(((A[E][0]-L[l])*(L[l+1]-L[l+3])-(A[E][1]-L[l+1])*(L[l]-L[l+2]))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2]))>0&((A[E][0]-L[l])*Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)-(A[E][1]-L[l+1])*Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2]))>=0&((A[E][0]-L[l])*Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)-(A[E][1]-L[l+1])*Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2]))<1){A[E][4][0][input]=!A[E][4][0][input]?Math.hypot(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input),Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input))*((A[E][0]-L[l])*(L[l+1]-L[l+3])-(A[E][1]-L[l+1])*(L[l]-L[l+2]))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2])):A[E][4][0][input]>Math.hypot(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input),Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input))*((A[E][0]-L[l])*(L[l+1]-L[l+3])-(A[E][1]-L[l+1])*(L[l]-L[l+2]))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2]))?Math.hypot(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input),Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input))*((A[E][0]-L[l])*(L[l+1]-L[l+3])-(A[E][1]-L[l+1])*(L[l]-L[l+2]))/(Math.sin(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l+1]-L[l+3])-Math.cos(A[E][2]+Math.PI/A[E][4][0].length*2*input)*(L[l]-L[l+2])):A[E][4][0][input];}}}
+Random=0;
+for(neurons=0;neurons<A[E][4].length-1;neurons++)for(nextNeuron=0;nextNeuron<A[E][4][neurons+1].length;nextNeuron++){A[E][4][neurons+1][nextNeuron]=0;
+for(neuron of A[E][4][neurons]){A[E][4][neurons+1][nextNeuron]+=neuron*A[E][5][Random];
+Random++;}}
+for(output=0;output<A[E][4][A[E][4].length-1].length;output++)A[E][4][A[E][4].length-1][output]=A[E][4][A[E][4].length-1][output]>0?1:0;
+p.push(A[E][0]+Math.sin(A[E][2])*Math.sqrt(3)/48-Math.cos(A[E][2])/16,A[E][1]+Math.cos(A[E][2])*Math.sqrt(3)/48+Math.sin(A[E][2])/16,0,1,A[E][0]+Math.sin(A[E][2])*Math.sqrt(3)/48+Math.cos(A[E][2])/16,A[E][1]+Math.cos(A[E][2])*Math.sqrt(3)/48-Math.sin(A[E][2])/16,0,1,A[E][0]-Math.sin(A[E][2])/24*Math.sqrt(3),A[E][1]-Math.cos(A[E][2])/24*Math.sqrt(3),0,1)
+C.push(1,1,1,1,1,1,1,1,1,1,1,1);}}
+document.querySelector`canvas`.getContext`webgl`.clear(document.querySelector`canvas`.getContext`webgl`.COLOR_BUFFER_BIT|document.querySelector`canvas`.getContext`webgl`.DEPTH_BUFFER_BIT);
+document.querySelector`canvas`.getContext`webgl`.bindBuffer(document.querySelector`canvas`.getContext`webgl`.ARRAY_BUFFER,document.querySelector`canvas`.getContext`webgl`.createBuffer());
+document.querySelector`canvas`.getContext`webgl`.bufferData(document.querySelector`canvas`.getContext`webgl`.ARRAY_BUFFER,new Float32Array(p),document.querySelector`canvas`.getContext`webgl`.STATIC_DRAW);
+document.querySelector`canvas`.getContext`webgl`.vertexAttribPointer(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(P,`P`),4,document.querySelector`canvas`.getContext`webgl`.FLOAT,false,0,0);
+document.querySelector`canvas`.getContext`webgl`.bindBuffer(document.querySelector`canvas`.getContext`webgl`.ARRAY_BUFFER,document.querySelector`canvas`.getContext`webgl`.createBuffer());
+document.querySelector`canvas`.getContext`webgl`.bufferData(document.querySelector`canvas`.getContext`webgl`.ARRAY_BUFFER,new Float32Array(C),document.querySelector`canvas`.getContext`webgl`.STATIC_DRAW);
+document.querySelector`canvas`.getContext`webgl`.vertexAttribPointer(document.querySelector`canvas`.getContext`webgl`.getAttribLocation(P,`C`),4,document.querySelector`canvas`.getContext`webgl`.FLOAT,false,0,0);
+document.querySelector`canvas`.getContext`webgl`.drawArrays(document.querySelector`canvas`.getContext`webgl`.TRIANGLES,0,p.length/4);
+requestAnimationFrame(F);})();</script>
